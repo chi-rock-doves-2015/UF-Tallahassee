@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @user = User.find_by(id: session[:user_id])
 
     if @commentable.comments << @comment && @user.comments << @comment
-      redirect_to @parent || @commentable
+      redirect_to @comment.ancestry
     else
       @errors = @comment.errors.full_messages
       render "new"
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find_by(id: params[:id])
     if @comment.update_attributes(comment_params)
-      redirect_to @comment
+      redirect_to @comment.ancestry
     else
       @errors = @comment.errors.full_messages
       render "edit"
@@ -51,9 +51,10 @@ class CommentsController < ApplicationController
   def destroy
     @user = User.find_by(id: session[:user_id])
     if @comment = @user.comments.find_by(id: params[:id])
+      ancestry = @comment.ancestry
       @comment.destroy
     end
-    redirect_to user_posts_path(@user)
+    redirect_to ancestry
   end
 
   protected
@@ -64,32 +65,13 @@ class CommentsController < ApplicationController
 
   def set_commentable
     @commentable =  if params[:proposal_id]
-                      @redirect_to = Proposal.find_by(id: params[:proposal_id])
+                      Proposal.find_by(id: params[:proposal_id])
                     elsif params[:experiment_id]
-                      @redirect_to = Experiment.find_by(id: params[:experiment_id])
+                      Experiment.find_by(id: params[:experiment_id])
                     else
-                      comment = Comment.find_by(id: params[:comment_id])
-                      @redirect_to = comment.commentable
-                      comment
+                      Comment.find_by(id: params[:comment_id])
                     end
   end
-
-  def set_redirect
-    @redirect_path = if params[:proposal_id]
-      proposal_path(params[:proposal_id])
-    elsif params[:experiment_id]
-      experiment_path(params[:experiment_id])
-    else
-    end
-  end
-  @commentable.path
-  # def commentable_path(commentable)
-  #   if commentable
-  #     Proposal.find_by(id: params[:post_id])
-  #   else
-  #     Comment.find_by(id: params[:comment_id])
-  #   end
-  # end
 
   private
 
