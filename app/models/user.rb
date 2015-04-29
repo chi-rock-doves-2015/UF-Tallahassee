@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :proposals#, foreign_key: :faculty_id
-  has_many :experiments#, foreign_key: :researcher_id
-  has_many :comments#, foreign_key: :author_id'
+  has_many :proposals
+  has_many :experiments
+  has_many :comments
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true
