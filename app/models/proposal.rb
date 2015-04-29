@@ -3,5 +3,5 @@ class Proposal < ActiveRecord::Base
   has_many :experiments
   has_many :comments, as: :commentable
 
-  validates :title, :hypothesis presence: true
+  validates :title, :hypothesis, presence: true
 end
