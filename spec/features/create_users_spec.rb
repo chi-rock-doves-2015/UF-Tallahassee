@@ -22,9 +22,19 @@ RSpec.feature "CreateUsers", type: :feature do
 
       expect(page).to have_content('welcome')
     end
+
   end
 
-  pending "outsider attempts to sign up"
+  feature "outsider attempts to sign up"
 
+    scenario 'without university email' do
+      visit '/signup'
+      fill_in 'Email', with: 'charlatan@ftu.edu'
+      select 'Researcher'
+      fill_in 'Password', with: 'password'
+      click_button 'Sign up'
+
+      expect(page).to have_content('Error:')
+    end
 
 end
