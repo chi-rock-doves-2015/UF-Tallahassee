@@ -11,7 +11,7 @@ RSpec.feature "CreateUsers", type: :feature do
        fill_in 'Password', with: 'password'
        click_button 'Create User'
 
-      expect(page).to have_content('welcome')
+      expect(page).to have_content('@Prof. Fake')
     end
 
     scenario "with valid params as researcher" do
