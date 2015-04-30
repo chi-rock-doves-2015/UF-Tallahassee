@@ -1,7 +1,11 @@
+<section>
 <%= form_for @proposal do |f| %>
-  <%= f.text_field :title,      placeholder: "title"      %>
-  <%= f.text_area :hypothesis, placeholder: "hypothesis"  %>
-  <%= f.text_area :background, placeholder: "background"  %>
-  <%= f.submit %>
+  <p><%= f.label :title %></p>
+  <p><%= f.text_field :title,      placeholder: "title"      %></p>
+  <p><%= f.label :hypothesis %></p>
+  <p><%= f.text_area :hypothesis, placeholder: "hypothesis"  %></p>
+  <p><%= f.label :background %></p>
+  <p><%= f.text_area :background, placeholder: "background"  %></p>
+  <p><%= f.submit %></p>
 <% end %>
-
+</section>

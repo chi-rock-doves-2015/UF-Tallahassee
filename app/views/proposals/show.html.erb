@@ -1,6 +1,13 @@
 <section>
   <h3>Proposal</h3>
   <h2><%= @proposal.title %></h2>
+  <% if current_user.role == "researcher" %>
+    <%= button_to "Run an Experiment", new_proposal_experiment_path(@proposal), method: :get %>
+  <% end %>
+
+  <% if current_user.id == @proposal.faculty.id %>
+    <%= button_to "Edit Proposal", edit_proposal_path(@proposal), method: :get %>
+  <% end %>
 
   <dl>
     <dt>Faculty Sponsor</dt>
