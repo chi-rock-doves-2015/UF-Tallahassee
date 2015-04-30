@@ -1,6 +1,7 @@
 <h2><%= current_user.name %> - Dashboard </h2>
 <% if current_user.role == "faculty" %>
-  <h2>Proposals:</h2>
+      <%= button_to "New Proposal", new_proposal_path, method: :get %>
+  <h2>Your Proposals:</h2>
   <section>
     <table>
       <thead>
