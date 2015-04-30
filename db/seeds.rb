@@ -14,4 +14,4 @@ role = ["researcher", "faculty"]
 
 5.times { Experiment.create!(title: Faker::Name.title, methodology: Faker::Lorem.paragraph, observations: Faker::Lorem.paragraph, conclusion: Faker::Lorem.paragraph, researcher_id: (1..5), proposal_id: (1..5)) }
 
-5.times { Comment.create!(body: Faker::Lorem.sentence, author_id: (1..5)) }
+5.times { Comment.create!(body: Faker::Lorem.sentence, author_id: (1..5), commentable_id: (1..5)) }
