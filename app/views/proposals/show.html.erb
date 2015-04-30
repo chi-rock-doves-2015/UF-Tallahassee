@@ -1,0 +1,33 @@
+<section>
+  <h3>Proposal</h3>
+  <h2><%= @proposal.title %></h2>
+
+  <dl>
+    <dt>Faculty Sponsor</dt>
+    <dd><%= @proposal.faculty.name %></dd>
+    <dt>Date Created</dt>
+    <dd><%= @proposal.created_at.strftime("%d %b, %Y") %></dd>
+    <dt>Last Updated</dt>
+    <dd><%= @proposal.updated_at.strftime("%d %b, %Y") %></dd>
+  </dl>
+
+  <section class="hypothesis-container">
+    <h3>Hypothesis</h3>
+    <p><%= @proposal.hypothesis %></p>
+  </section>
+
+  <section class="background-container">
+    <h3>Background</h3>
+    <p><%= @proposal.background %></p>
+  </section>
+
+  <section>
+    <%= render @proposal.comments %>
+  </section>
+</section>
+
+
+
+
+
+<!-- viewer specific edit/delete button options if current_user == proposal.faculty.id-->

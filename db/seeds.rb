@@ -19,4 +19,4 @@ commentables = ["Proposal", "Comment", "Experiment" ]
 
 20.times { Experiment.create!(title: Faker::Name.title, methodology: Faker::Lorem.paragraph, observations: Faker::Lorem.paragraph, conclusion: Faker::Lorem.paragraph, researcher_id: rand(1..5), proposal_id: (1..5)) }
 
-30.times { Comment.create!(body: Faker::Lorem.sentence, author_id: rand(1..5), commentable_id: rand(1..5), commentable_type: "User") }
+30.times { Comment.create!(body: Faker::Lorem.sentence, author_id: rand(1..5), commentable_id: rand(1..5), commentable_type: commentables.sample) }

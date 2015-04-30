@@ -4,7 +4,7 @@
     <span class="user"><%= link_to comment.author.name, user_path(comment.author) %></span>
     <span class="created-at"><%= comment.created_at %></span>
   </p>
-
+Ancestor: <%= comment.ancestry %>
   <p class= "comment">
     <%= comment.body %>
     <span><%= link_to "[reply]", new_comment_comment_path(comment) %></span>

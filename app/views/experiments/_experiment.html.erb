@@ -1,5 +1,6 @@
 <tr>
   <td><%= link_to experiment.title, experiment_path(experiment) %></td>
-  <td><%= experiment.researcher %></td>
-  <td><%= experiment.created_at %></td>
+  <td><%= experiment.researcher.name %></td>
+  <td><%= experiment.created_at.strftime("%d %b, %Y") %></td>
+  <td><%= experiment.updated_at.strftime("%d %b, %Y") %></td>
 </tr>
