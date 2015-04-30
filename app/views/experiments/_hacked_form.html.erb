@@ -1,5 +1,5 @@
 <section>
-<%= form_for @experiment, url: proposal_experiments_path do |f| %>
+<%= form_for @experiment do |f| %>
   <p><%= f.label :title %></p>
   <p><%= f.text_field :title,        placeholder: "title"        %></p>
 
