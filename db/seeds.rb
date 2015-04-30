@@ -21,3 +21,5 @@ commentables = ["Proposal", "Comment", "Experiment" ]
 
 500.times { Comment.create!(body: Faker::Lorem.sentence, author_id: rand(1..10), commentable_id: rand(1..10), commentable_type: commentables.sample) }
 
+
+
