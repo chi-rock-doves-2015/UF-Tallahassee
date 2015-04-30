@@ -3,13 +3,13 @@ class ProposalsController < ApplicationController
   # before_action :set_scope, only: [:index, :edit, :show]
 
   def index
-    @proposal = @scope.all
+    @proposals = @scope.all
     render "index"
   end
 
   def new
     if session[:user_id]
-      @proposal = proposal.new
+      @proposal = Proposal.new
       render "new"
     else
       @errors = ["You must be signed in to create a proposal"]
