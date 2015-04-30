@@ -1,0 +1,17 @@
+<header class="navbar">
+  <div class="container">
+    <%= link_to "UFT Center for Scientific Research", root_path %>
+    <nav>
+      <ul class="nav">
+      <% if logged_in? %>
+        <li><%= link_to "Proposals", proposals_path %></li>
+        <li><%= link_to "Experiments", experiments_path %></li>
+        <li><%= link_to "@#{current_user.name}", current_user %></li>
+        <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+      <% else %>
+        <li><%= link_to "Log In", login_path %></li>
+        <li><%= link_to "Sign Up", signup_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
