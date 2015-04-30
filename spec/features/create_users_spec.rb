@@ -18,7 +18,7 @@ RSpec.feature "CreateUsers", type: :feature do
       visit '/signup'
        fill_in 'Email', with: 'researcher@uft.edu'
        fill_in 'Display Name', with: "Dr. Fake"
-       select 'Researcher'
+       select 'researcher'
        fill_in 'Password', with: 'password'
        click_button 'Create User'
 
@@ -33,7 +33,7 @@ RSpec.feature "CreateUsers", type: :feature do
       visit '/signup'
       fill_in 'Email', with: 'charlatan@ftu.edu'
       fill_in 'Display Name', with: "Mr. Nobody"
-      select 'Researcher'
+      select 'researcher'
       fill_in 'Password', with: 'password'
       click_button 'Create User'
 
