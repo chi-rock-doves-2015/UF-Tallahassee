@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def log_out
     session.delete(:user_id)
-    @_current_user = nicul
+    @_current_user = nil
   end
 
 end
