@@ -4,13 +4,13 @@
     <span class="user"><%= link_to comment.author.name, user_path(comment.author) %></span>
     <span class="created-at"><%= comment.created_at %></span>
   </p>
-Parent: <%= comment.commentable %>
-Ancestor: <%= comment.ancestry %>
+Parent: <%= comment.commentable.id %>
+Ancestor: <%= comment.ancestry.id %>
   <p class= "comment">
     <%= comment.body %>
     <span><%= link_to "[reply]", new_comment_comment_path(comment) %></span>
     <span><%= link_to "[edit]", edit_comment_path(comment) %></span>
-    <span><%= link_to "[delete]", comment_path(comment), :method => :delete, data: {confirm: "Are you sure?"} %></span>
+    <!-- <span><%# link_to "[delete]", comment_path(comment), :method => :delete, data: {confirm: "Are you sure?"} %></span> -->
 
     <p class="comments">
       <% if comment.comments.any? %>
