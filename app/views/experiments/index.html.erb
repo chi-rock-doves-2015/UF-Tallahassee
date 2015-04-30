@@ -1,4 +1,18 @@
-<div class="experiments-container">
-    <%= render @experiments %>
+<div class="experiment-container">
+  <h2>Experiments</h2>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Researcher</th>
+          <th>Date Created</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @experiments %>
+      </tbody>
+    </table>
+  </section>
 </div>
-

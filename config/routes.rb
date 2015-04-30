@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #SESSIONS
   get "login" => "sessions#new", :as => :login
   post "login" => "sessions#create"
-  delete "logout" => "sessions#destroy"
+  delete "logout" => "sessions#destroy"#, :via => "delete"
 
   #USERS
   get "signup" => "users#new"
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   #COMMENTS
-  resources :comments, :only => [:index, :edit, :update, :delete] do
+  resources :comments, :only => [:index, :edit, :update, :destroy] do
     resources :comments, :only => [:new, :create]
   end
 

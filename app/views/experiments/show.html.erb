@@ -1,0 +1,39 @@
+<section>
+  <h3>Experiment</h3>
+  <h2><%= @experiment.title %></h2>
+
+  <dl>
+    <dt>Researcher</dt>
+    <dd><%= @experiment.researcher.name %></dd>
+    <dt>Date Created</dt>
+    <dd><%= @experiment.created_at.strftime("%d %b, %Y") %></dd>
+    <dt>Last Updated</dt>
+    <dd><%= @experiment.updated_at.strftime("%d %b, %Y") %></dd>
+  </dl>
+
+  <section class="methodology-container">
+    <h3>Methodology</h3>
+    <p><%= @experiment.methodology %></p>
+  </section>
+
+  <section class="observations-container">
+    <h3>Observations</h3>
+    <p><%= @experiment.observations %></p>
+  </section>
+
+  <section class="conclusion-container">
+    <h3>Conclusion</h3>
+    <p><%= @experiment.conclusion %></p>
+  </section>
+
+  <section>
+    <h3>Comments</h3>
+    <%= render @experiment.comments %>
+  </section>
+</section>
+
+
+
+
+
+<!-- viewer specific edit/delete button options if current_user == proposal.faculty.id-->
