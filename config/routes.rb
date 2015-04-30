@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   #USERS
   get "signup" => "users#new"
-  resources :users, :only => [:show, :create] do
+  resources :users, :only => [:new, :show, :create] do
     resources :proposals, :only => [:index]
   end
 
