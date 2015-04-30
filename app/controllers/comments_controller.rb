@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
   def edit
     @user = User.find(session[:user_id])
-    @comment = @comment.find_by(id: params[:id])
+    @comment = Comment.find_by(id: params[:id])
     if @comment.author.id == session[:user_id]
       render "edit"
     else
@@ -54,6 +54,7 @@ class CommentsController < ApplicationController
       ancestry = @comment.ancestry
       @comment.destroy
     end
+
     redirect_to ancestry
   end
 
