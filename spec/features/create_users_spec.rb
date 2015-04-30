@@ -7,9 +7,9 @@ RSpec.feature "CreateUsers", type: :feature do
       visit '/signup'
        fill_in 'Email', with: 'faculty@uft.edu'
        fill_in 'Display Name', with: "Prof. Fake"
-       select 'Faculty'
+       select 'faculty'
        fill_in 'Password', with: 'password'
-       click_button 'Sign up'
+       click_button 'Create User'
 
       expect(page).to have_content('welcome')
     end
@@ -20,7 +20,7 @@ RSpec.feature "CreateUsers", type: :feature do
        fill_in 'Display Name', with: "Dr. Fake"
        select 'Researcher'
        fill_in 'Password', with: 'password'
-       click_button 'Sign up'
+       click_button 'Create User'
 
       expect(page).to have_content('welcome')
     end
@@ -35,7 +35,7 @@ RSpec.feature "CreateUsers", type: :feature do
       fill_in 'Display Name', with: "Mr. Nobody"
       select 'Researcher'
       fill_in 'Password', with: 'password'
-      click_button 'Sign up'
+      click_button 'Create User'
 
       expect(page).to have_content('Error:')
     end
