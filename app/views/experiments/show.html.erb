@@ -2,6 +2,9 @@
   <h3>Experiment</h3>
   <h2><%= @experiment.title %></h2>
 
+  <% if current_user.id == @experiment.researcher.id %>
+    <%= button_to "Edit Experiment", edit_experiment_path(@experiment), method: :get %>
+  <% end %>
   <dl>
     <dt>Researcher</dt>
     <dd><%= @experiment.researcher.name %></dd>
