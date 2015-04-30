@@ -13,11 +13,11 @@ Comment.destroy_all
 
 commentables = ["Proposal", "Comment", "Experiment" ]
 
-60.times { User.create!(name: Faker::Name.name, email: Faker::Internet.user_name + "@uft.edu", password: "password", role: rand(0..1)) }
+10.times { User.create!(name: Faker::Name.name, email: Faker::Internet.user_name + "@uft.edu", password: "password", role: rand(0..1)) }
 
-120.times { Proposal.create!(title: Faker::Company.catch_phrase, hypothesis: Faker::Lorem.paragraph, background: Faker::Lorem.paragraph, faculty_id: rand(1..15)) }
+120.times { Proposal.create!(title: Faker::Company.catch_phrase, hypothesis: Faker::Lorem.paragraph, background: Faker::Lorem.paragraph, faculty_id: rand(1..10)) }
 
-300.times { Experiment.create!(title: Faker::Company.bs, methodology: Faker::Lorem.paragraph, observations: Faker::Lorem.paragraph, conclusion: Faker::Lorem.paragraph, researcher_id: rand(1..15), proposal_id: rand(1..10)) }
+300.times { Experiment.create!(title: Faker::Company.bs, methodology: Faker::Lorem.paragraph, observations: Faker::Lorem.paragraph, conclusion: Faker::Lorem.paragraph, researcher_id: rand(1..10), proposal_id: rand(1..10)) }
 
 500.times { Comment.create!(body: Faker::Lorem.sentence, author_id: rand(1..10), commentable_id: rand(1..10), commentable_type: commentables.sample) }
 

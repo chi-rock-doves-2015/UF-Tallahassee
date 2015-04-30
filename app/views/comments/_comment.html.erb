@@ -9,7 +9,9 @@ Ancestor: <%= comment.ancestry.id %>
   <p class= "comment">
     <%= comment.body %>
     <span><%= link_to "[reply]", new_comment_comment_path(comment) %></span>
-    <span><%= link_to "[edit]", edit_comment_path(comment) %></span>
+    <% if current_user.id == comment.author.id %>
+      <span><%= link_to "[edit]", edit_comment_path(comment) %></span>
+    <% end %>
     <!-- <span><%# link_to "[delete]", comment_path(comment), :method => :delete, data: {confirm: "Are you sure?"} %></span> -->
 
     <p class="comments">
