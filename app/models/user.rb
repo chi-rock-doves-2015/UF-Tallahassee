@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :password, presence: true, length: { minimum: 6 }
-  validates :email, uniqueness: true, presence: true, format: { with: /.+(@uft.edu)/, message: "invalid email" }
+  validates :email, uniqueness: true, presence: true, format: { with: /.+(@uft.edu)/, message: "must be registered with UFT" }
 
   has_secure_password
 end
