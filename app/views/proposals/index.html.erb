@@ -1,9 +1,6 @@
 <div class="proposal-container">
   <% if current_user %>
   <h2>Proposals:</h2>
-  <% if current_user.role == "researcher" %>
-    <%= button_to "Run an Experiment", new_experiment_path %>
-  <% end %>
   <section>
     <table>
       <thead>

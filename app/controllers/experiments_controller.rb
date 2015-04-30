@@ -20,8 +20,8 @@ class ExperimentsController < ApplicationController
   def create
     @experiment = Experiment.new(experiment_params)
     @user = User.find_by(id: session[:user_id])
-
-    if @user.experiments << @experiment
+    @proposal = Proposal.find_by(id: params[:proposal_id])
+    if @user.experiments << @experiment && @proposal.experiments << @experiment
     #### NOT SURE THIS WILL WORK !!!!!!!!!!!!
       redirect_to @experiment.proposal
     else
