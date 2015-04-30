@@ -1,7 +1,37 @@
 <h2><%= current_user.name %> - Dashboard </h2>
-<% if current_user.role == 0 %>
+<% if current_user.role == "faculty" %>
+  <h2>Proposals:</h2>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Faculty Sponsor</th>
+          <th>Date Created</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render current_user.proposals %>
+      </tbody>
+    </table>
+  </section>
 
-  <%= render current_user.proposals %>
 <% else %>
-  <%= render current_user.experiments %>
+  <h2>Experiments</h2>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Researcher</th>
+          <th>Date Created</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render current_user.experiments %>
+      </tbody>
+    </table>
+  </section>
 <% end %>
