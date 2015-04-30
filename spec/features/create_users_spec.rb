@@ -1,7 +1,10 @@
 require 'rails_helper'
+# require 'database_cleaner'
 
 RSpec.feature "CreateUsers", type: :feature do
-
+  before(:all) do
+    DatabaseCleaner.clean_with :truncation
+  end
   feature "user signs up" do
     scenario "with valid params as faculty" do
       visit '/signup'
@@ -22,7 +25,7 @@ RSpec.feature "CreateUsers", type: :feature do
        fill_in 'Password', with: 'password'
        click_button 'Create User'
 
-      expect(page).to have_content('welcome')
+      expect(page).to have_content('@Dr. Fake')
     end
 
   end
