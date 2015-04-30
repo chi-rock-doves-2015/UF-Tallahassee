@@ -36,7 +36,7 @@ class ProposalsController < ApplicationController
   def edit
     @user = User.find(session[:user_id])
     @proposal = Proposal.find(params[:id])
-    if @proposal.author.id == session[:user_id]
+    if @proposal.faculty.id == session[:user_id]
       render "edit"
     else
       @errors = ["You must be the author of the proposal to edit"]
@@ -57,15 +57,15 @@ class ProposalsController < ApplicationController
   def destroy
     @user = User.find(session[:user_id])
     @proposal = Proposal.find(params[:id])
-    # puts @user.id == @proposal.author.id
-    @proposal.destroy if @user.id == @post.author.id
+    # puts @user.id == @proposal.faculty.id
+    @proposal.destroy if @user.id == @post.faculty.id
     redirect_to user_proposals_path(@user)
   end
 
   protected
 
   def set_scope
-    @scope ||= params[:user_id] ? Proposal.where(author: params[:user_id]) : Proposal
+    @scope ||= params[:user_id] ? Proposal.where(faculty: params[:user_id]) : Proposal
   end
 
   private
