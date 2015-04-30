@@ -13,7 +13,7 @@ RSpec.feature "Sign In", type: :feature do
       within('form') do
         fill_in 'Email', with: 'faculty@uft.edu'
         fill_in 'Password', with: 'password'
-        click_button 'Login'
+        click_button 'Log In'
       end
       expect(page).to have_content("@Prof. Fake")
     end
@@ -23,7 +23,7 @@ RSpec.feature "Sign In", type: :feature do
       within('form') do
         fill_in 'Email', with: 'researcher@uft.edu'
         fill_in 'Password', with: 'password'
-        click_button 'Login'
+        click_button 'Log In'
       end
       expect(page).to have_content('@Dr. Fake')
     end
@@ -33,9 +33,9 @@ RSpec.feature "Sign In", type: :feature do
       within('form') do
         fill_in 'Email', with: 'researcher@uft.edu'
         fill_in 'Password', with: 'pissword'
-        click_button 'Login'
+        click_button 'Log In'
       end
-      expect(page).to have_content('Email/Password Incorrect')
+      expect(page).to have_content('You have entered an invalid username/password Email Password')
     end
   end
 end
