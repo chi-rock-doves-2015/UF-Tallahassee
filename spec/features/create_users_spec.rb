@@ -40,7 +40,7 @@ RSpec.feature "CreateUsers", type: :feature do
       fill_in 'Password', with: 'password'
       click_button 'Create User'
 
-      expect(page).to have_content('Registration')
+      expect(page).to have_content('must be registered with UFT')
     end
   end
 
