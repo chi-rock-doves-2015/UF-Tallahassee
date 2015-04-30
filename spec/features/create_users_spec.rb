@@ -27,7 +27,7 @@ RSpec.feature "CreateUsers", type: :feature do
 
   end
 
-  feature "outsider attempts to sign up"
+  feature "outsider attempts to sign up" do
 
     scenario 'without university email' do
       visit '/signup'
@@ -37,7 +37,8 @@ RSpec.feature "CreateUsers", type: :feature do
       fill_in 'Password', with: 'password'
       click_button 'Create User'
 
-      expect(page).to have_content('Error:')
+      expect(page).to have_content('Registration')
     end
+  end
 
 end
