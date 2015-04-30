@@ -1,0 +1,7 @@
+<%= form_for @experiment do |f| %>
+  <%= f.text_field :title,        placeholder: "title"        %>
+  <%= f.text_area :methodology,   placeholder: "methodology"  %>
+  <%= f.text_area :observations,  placeholder: "observations" %>
+  <%= f.text_area :conclusion,    placeholder: "conslusion"   %>
+  <%= f.submit %>
+<% end %>

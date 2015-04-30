@@ -4,4 +4,9 @@ class Proposal < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   validates :title, :hypothesis, presence: true
+
+  # def time_since_creation
+  #   ((Time.now - created_at) / 3600).round
+  # end
+
 end
