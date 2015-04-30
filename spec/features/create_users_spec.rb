@@ -6,6 +6,7 @@ RSpec.feature "CreateUsers", type: :feature do
     scenario "with valid params as faculty" do
       visit '/signup'
        fill_in 'Email', with: 'faculty@uft.edu'
+       fill_in 'Display Name', with: "Prof. Fake"
        select 'Faculty'
        fill_in 'Password', with: 'password'
        click_button 'Sign up'
@@ -16,6 +17,7 @@ RSpec.feature "CreateUsers", type: :feature do
     scenario "with valid params as researcher" do
       visit '/signup'
        fill_in 'Email', with: 'researcher@uft.edu'
+       fill_in 'Display Name', with: "Dr. Fake"
        select 'Researcher'
        fill_in 'Password', with: 'password'
        click_button 'Sign up'
@@ -30,6 +32,7 @@ RSpec.feature "CreateUsers", type: :feature do
     scenario 'without university email' do
       visit '/signup'
       fill_in 'Email', with: 'charlatan@ftu.edu'
+      fill_in 'Display Name', with: "Mr. Nobody"
       select 'Researcher'
       fill_in 'Password', with: 'password'
       click_button 'Sign up'
