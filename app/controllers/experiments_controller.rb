@@ -22,6 +22,7 @@ class ExperimentsController < ApplicationController
     @user = User.find_by(id: session[:user_id])
 
     if @user.experiments << @experiment
+    #### NOT SURE THIS WILL WORK !!!!!!!!!!!!
       redirect_to @experiment.proposal
     else
       @errors = @experiment.errors.full_messages
@@ -36,10 +37,10 @@ class ExperimentsController < ApplicationController
   def edit
     @user = User.find(session[:user_id])
     @experiment = Experiment.find(params[:id])
-    if @experiment.author.id == session[:user_id]
+    if @experiment.researcher.id == session[:user_id]
       render "edit"
     else
-      @errors = ["You must be the author of the experiment to edit."]
+      @errors = ["You must be the researcher on this experiment to edit."]
       redirect_to :back
     end
   end
@@ -57,21 +58,21 @@ class ExperimentsController < ApplicationController
   def destroy
     @user = User.find(session[:user_id])
     @experiment = Experiment.find(params[:id])
-    # puts @user.id == @experiment.author.id
-    @experiment.destroy if @user.id == @post.author.id
+    # puts @user.id == @experiment.researcher.id
+    @experiment.destroy if @user.id == @experiment.researcher.id
     redirect_to user_experiments_path(@user)
   end
 
   protected
 
   def set_scope
-    @scope ||= params[:user_id] ? Experiment.where(author: params[:user_id]) : Experiment
+    @scope ||= params[:user_id] ? Experiment.where(researcher: params[:user_id]) : Experiment
   end
 
   private
 
     def experiment_params
-      params.require(:experiment).permit(:title, :hypothesis, :background, :faculty)
+      params.require(:experiment).permit(:title, :methodology, :observations, :conclusion)
     end
 
 end
