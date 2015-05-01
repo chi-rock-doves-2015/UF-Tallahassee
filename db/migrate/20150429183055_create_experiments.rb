@@ -3,7 +3,7 @@ class CreateExperiments < ActiveRecord::Migration
     create_table :experiments do |t|
       t.string :title
       t.text :methodology
-      t.text :observations
+      t.string :status
       t.text :conclusion
       t.belongs_to :researcher
       t.belongs_to :proposal
