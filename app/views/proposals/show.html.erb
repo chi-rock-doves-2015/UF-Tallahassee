@@ -49,8 +49,8 @@
 
 <br>
 <br>
-  <section class="comments">
-    <h3>Comments</h3>
+  <h3>Comments</h3>
+  <section class="comments-section">
     <%= button_to "Add Comment", new_proposal_comment_path(@proposal), method: :get, class:"new-comment-btn" %>
     <%= render @proposal.comments %>
   </section>
