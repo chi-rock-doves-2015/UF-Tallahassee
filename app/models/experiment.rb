@@ -5,9 +5,12 @@ class Experiment < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :observations
 
-  validates :title, :observations, presence: true
+  validates :title, :summary presence: true
 
   aasm column: 'status' do
+    state :pending, initial: true
+    state :running
+    state :completed
     ###
   end
 end
