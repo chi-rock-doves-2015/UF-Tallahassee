@@ -6,11 +6,6 @@
   <p><%= f.label :summary %></p>
   <p><%= f.text_field :summary,        placeholder: "summary"        %></p>
 
-  <% if @experiment.methodology %>
-    <p><%= f.label :methodology %></p>
-    <p><%= f.text_area :methodology,   placeholder: "methodology"  %></p>
-  <% end %>
-
   <p><%= f.submit %></p>
 <% end %>
 </section>

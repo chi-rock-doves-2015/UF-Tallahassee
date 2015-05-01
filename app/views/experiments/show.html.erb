@@ -1,5 +1,5 @@
 <section>
-  <h3>Experiment</h3>
+  <h2>Experiment:</h2>
   <h2><%= @experiment.title %></h2>
 
   <% if current_user.id == @experiment.researcher.id %>
@@ -21,26 +21,25 @@
   <section class="methodology-container">
     <h3>Methodology</h3>
     <% if current_user.id == @experiment.researcher.id %>
-      <%= button_to "#{@experiment.methodology ? "Edit" : "Add"} Methodology", edit_methodology_path, method: :get %>
+      <%= button_to "#{@experiment.methodology ? "Edit" : "Add"} Methodology", edit_methodology_path, method: :get if @experiment.pending? %>
     <% end %>
     <p><%= @experiment.methodology %></p>
   </section>
 
   <section class="observation-container">
     <h3>Observation Log</h3>
-    <%  if @experiment.observations.any? %>
-    <p><%= render @experiment.observations %></p>
-    <% elsif @experiment.running? %>
-      <%= button_to "Add Observation", "#", method: :get %>
-    <% end %>
+    <p><%= render @experiment.observations if @experiment.observations.any?%></p>
+      <%= button_to "Add Observation", new_experiment_observation_path(@experiment),  method: :get unless @experiment.pending? %>
   </section>
 
-  <% if @experiment.completed? %>
     <section class="conclusion-container">
       <h3>Conclusion</h3>
-      <p><%= @experiment.conclusion %></p>
+      <% if @experiment.completed? %>
+          <p><%= @experiment.conclusion %></p>
+      <% elsif @experiment.running? %>
+          <%= button_to "Add Conclusion", conclude_experiment_path(@experiment),  method: :get %>
+      <% end %>
     </section>
-  <% end %>
 
   <section>
     <h3>Comments</h3>

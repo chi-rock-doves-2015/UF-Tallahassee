@@ -73,6 +73,17 @@ class ExperimentsController < ApplicationController
     end
   end
 
+  def conclude_experiment
+    @experiment = Experiment.find_by(id: params[:id])
+    if @experiment.researcher == current_user
+      render partial: "conclude_experiment"
+    else
+      flash[:alert] = "You must be the researcher on this experiment to edit. I don't know how you even clicked that button."
+      redirect_to :back
+    end
+  end
+
+
   protected
 
   def update_state
