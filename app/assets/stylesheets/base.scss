@@ -10,12 +10,19 @@ h1, h2, h3, h4, h5, p, a {
 }
 
 .container {
+  padding-top: 1em;
   min-width: 600px;
   width: 87%;
   margin: 0 auto;
 }
 
-.form {
+.field_with_errors input {
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+
+}
+
+.form input {
   // border: 1px solid black;
   // this is ugly when applied to full-page forms.
 }

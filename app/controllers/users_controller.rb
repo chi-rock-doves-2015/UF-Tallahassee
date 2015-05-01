@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :redirect_anon, only: [:new, :create]
   def new
     @user = User.new
   end
