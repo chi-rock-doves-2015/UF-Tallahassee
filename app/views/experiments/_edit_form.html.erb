@@ -1,11 +1,11 @@
-<div class='form'>
-<%= form_for @experiment, url: proposal_experiments_path do |f| %>
+<section>
+<%= form_for @experiment do |f| %>
   <p><%= f.label :title %></p>
   <p><%= f.text_field :title,        placeholder: "title"        %></p>
 
   <p><%= f.label :summary %></p>
-  <p><%= f.text_area :summary %></p>
+  <p><%= f.text_field :summary,        placeholder: "summary"        %></p>
 
   <p><%= f.submit %></p>
 <% end %>
-</div>
+</section>
