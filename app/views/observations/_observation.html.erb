@@ -1,0 +1,19 @@
+<article id="<%= observation.id %>">
+
+  <p>
+    <span class="created-at"><%= observation.created_at.strftime("%d %b, %Y") %></span>
+  </p>
+  <p class= "observation">
+    <h4><%= observation.heading %></h3>
+    <p><%= observation.body %></p>
+   <!--  <span><%# link_to "[reply]", new_observation_observation_path(observation) %></span>
+    <%# if current_user.id == observation.author.id %>
+      <span><%# link_to "[edit]", edit_observation_path(observation) %></span>
+    <%# end %> -->
+    <!-- <span><%# link_to "[delete]", observation_path(observation), :method => :delete, data: {confirm: "Are you sure?"} %></span> -->
+
+
+
+  </p>
+
+</article>

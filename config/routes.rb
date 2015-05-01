@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :observations
   #ROOT
   root "proposals#index"
 
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   # EXPERIMENTS COMMENTS
   resources :experiments, :except => [:new, :create] do
     resources :comments, :only => [:new, :create]
+    resources :observations, :only => [:new, :create]
   end
 
   #COMMENTS
@@ -29,6 +31,9 @@ Rails.application.routes.draw do
     resources :comments, :only => [:new, :create]
   end
 
+  #SPECIAL EXPERIMENT EDITS
+  get "experiments/:id/edit_methodology" => "experiments#edit_methodology", as: :edit_methodology
+  get "experiments/:id/conclude" => "experiments#conclude_experiment", as: :conclude_experiment
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -2,7 +2,7 @@
 
   <p>
     <span class="user"><%= link_to comment.author.name, user_path(comment.author) %></span>
-    <span class="created-at"><%= comment.created_at %></span>
+    <span class="created-at"><%= comment.created_at.strftime("%d %b, %Y") %></span>
   </p>
 Parent: <%= comment.commentable.id %>
 Ancestor: <%= comment.ancestry.id %>

@@ -1,0 +1,9 @@
+<div class='form'>
+  <%= form_for @experiment do |f| %>
+
+    <p><%= f.label :methodology %></p>
+    <p><%= f.text_area :methodology,   placeholder: "methodology"  %></p>
+
+    <p><%= f.submit %></p>
+  <% end %>
+</div>
