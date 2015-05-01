@@ -1,6 +1,8 @@
-Error(s): Your data could not be submitted because:
-<ul>
-  <% @errors.each do |error| %>
-    <li> <%= error%> </li>
-  <% end %>
-</ul>
+<div id='errors'>
+  Error(s): Your data could not be submitted because:
+  <ul>
+    <% @errors.each do |error| %>
+      <li> <%= error%> </li>
+    <% end %>
+  </ul>
+</div>

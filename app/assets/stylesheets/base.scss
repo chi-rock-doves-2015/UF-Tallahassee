@@ -4,3 +4,18 @@ $red: #c94d4d;
 h1, h2, h3, h4, h5, p, a {
   font-family: "helvetica", "sans-serif";
 }
+
+#alert, #errors {
+  color: red;
+}
+
+.container {
+  min-width: 600px;
+  width: 87%;
+  margin: 0 auto;
+}
+
+.form {
+  // border: 1px solid black;
+  // this is ugly when applied to full-page forms.
+}
