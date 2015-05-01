@@ -1,5 +1,6 @@
 <section>
   <h2>Experiment:</h2>
+  <h3>Status: <%= @experiment.status %></h3>
   <h2><%= @experiment.title %></h2>
 
   <% if current_user.id == @experiment.researcher.id %>
