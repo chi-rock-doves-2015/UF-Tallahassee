@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #ROOT
-  root "proposals#index"
+  root "sessions#new"
 
   #SESSIONS
   get "login" => "sessions#new", :as => :login
