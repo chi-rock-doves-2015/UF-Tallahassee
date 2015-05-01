@@ -20,6 +20,9 @@
 
   <section class="methodology-container">
     <h3>Methodology</h3>
+    <% if current_user.id == @experiment.researcher.id %>
+      <%= button_to "Add Methodology", edit_experiment_path(@experiment), method: :get %>
+    <% end %>
     <p><%= @experiment.methodology %></p>
   </section>
 
@@ -28,10 +31,12 @@
     <p><%= render @observations if @observations %></p>
   </section>
 
-  <section class="conclusion-container">
-    <h3>Conclusion</h3>
-    <p><%= @experiment.conclusion %></p>
-  </section>
+  <% if @experiment.completed? %>
+    <section class="conclusion-container">
+      <h3>Conclusion</h3>
+      <p><%= @experiment.conclusion %></p>
+    </section>
+  <% end %>
 
   <section>
     <h3>Comments</h3>

@@ -1,9 +1,9 @@
-<section>
-<%= form_for @experiment, url: proposal_experiments_path do |f| %>
+<div class='form'>
+  <%= form_for @experiment, url: proposal_experiments_path do |f| %>
 
-  <p><%= f.label :methodology %></p>
-  <p><%= f.text_area :methodology,   placeholder: "methodology"  %></p>
+    <p><%= f.label :methodology %></p>
+    <p><%= f.text_area :methodology,   placeholder: "methodology"  %></p>
 
-  <p><%= f.submit %></p>
-<% end %>
-</section>
+    <p><%= f.submit %></p>
+  <% end %>
+</div>

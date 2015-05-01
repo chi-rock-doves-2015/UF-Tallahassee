@@ -22,7 +22,7 @@ class ExperimentsController < ApplicationController
     @user = User.find_by(id: session[:user_id])
     @proposal = Proposal.find_by(id: params[:proposal_id])
     if @user.experiments << @experiment && @proposal.experiments << @experiment
-    #### NOT SURE THIS WILL WORK !!!!!!!!!!!!
+      update_state
       redirect_to @experiment
     else
       @errors = @experiment.errors.full_messages
@@ -47,6 +47,7 @@ class ExperimentsController < ApplicationController
   def update
     @experiment = Experiment.find(params[:id])
     if @experiment.update_attributes(experiment_params)
+      update_state
       redirect_to @experiment
     else
       @errors = @experiment.errors.full_messages
@@ -63,6 +64,12 @@ class ExperimentsController < ApplicationController
   end
 
   protected
+
+  def update_state
+    @experiment.run! if @experiment.pending? && @experiment.methodology
+    @experiment.complete! if @experiment.running? && @experiment.conclusion
+  end
+
 
   def set_scope
     @scope ||= params[:user_id] ? Experiment.where(researcher: params[:user_id]) : Experiment

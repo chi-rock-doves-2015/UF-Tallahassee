@@ -11,6 +11,18 @@ class Experiment < ActiveRecord::Base
     state :pending, initial: true
     state :running
     state :completed
-    ###
+
+    event :run do
+      transitions from: :pending, to: :running
+      puts 'running experiment'
+    end
+
+    event :complete do
+      transitions from: :running, to: :completed
+      puts 'experiment completed'
+    end
   end
+
+
+
 end
