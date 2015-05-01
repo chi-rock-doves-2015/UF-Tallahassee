@@ -42,8 +42,8 @@
     </section>
 
   <h3>Comments</h3>
+  <section class="comments" id="comments-section">
     <%= button_to "Add Comment", new_experiment_comment_path(@experiment), method: :get, class:"new-comment-btn" %>
-    <section class="comments" id="comments-section">
     <%= render @experiment.comments.order("created_at DESC") %>
   </section>
 
