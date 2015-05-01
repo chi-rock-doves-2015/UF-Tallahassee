@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :observations
   #ROOT
-  root "proposals#index"
+  root "sessions#new"
 
   #SESSIONS
   get "login" => "sessions#new", :as => :login

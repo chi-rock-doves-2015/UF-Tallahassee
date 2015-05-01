@@ -13,7 +13,7 @@ Comment.destroy_all
 
 commentables = ["Proposal", "Comment", "Experiment" ]
 
-10.times { User.create!(name: Faker::Name.name, email: Faker::Internet.user_name + "@uft.edu", password: "password", role: rand(0..1)) }
+11.times { User.create!(name: Faker::Name.name, email: Faker::Internet.user_name + "@uft.edu", password: "password", role: rand(0..1)) }
 
 120.times { Proposal.create!(title: Faker::Company.catch_phrase, hypothesis: Faker::Lorem.paragraph, background: Faker::Lorem.paragraph, faculty_id: rand(1..10)) }
 

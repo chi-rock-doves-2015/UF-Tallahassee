@@ -1,27 +1,33 @@
-<article id="<%= comment.id %>">
+<dl class="comments" id="<%= comment.id %>">
 
-  <p>
+  <dt>
     <span class="user"><%= link_to comment.author.name, user_path(comment.author) %></span>
     <span class="created-at"><%= comment.created_at.strftime("%d %b, %Y") %></span>
-  </p>
-Parent: <%= comment.commentable.id %>
-Ancestor: <%= comment.ancestry.id %>
-  <p class= "comment">
+  </dt>
+
+  <!-- <dt> -->
+  <!--   <span>Comment: % # comment.id %></span> -->
+  <!--   <span>Parent: % # comment.commentable.id %></span> -->
+  <!--   <span>Ancestor: % # comment.ancestry.id %></span> -->
+  <!-- </dt> -->
+
+  <dd class="comments">
     <%= comment.body %>
-    <span><%= link_to "[reply]", new_comment_comment_path(comment) %></span>
     <% if current_user.id == comment.author.id %>
-      <span><%= link_to "[edit]", edit_comment_path(comment) %></span>
+    <span><%= link_to "[edit]", edit_comment_path(comment) %></span>
     <% end %>
-    <!-- <span><%# link_to "[delete]", comment_path(comment), :method => :delete, data: {confirm: "Are you sure?"} %></span> -->
+  </dd>
 
-    <p class="comments">
-      <% if comment.comments.any? %>
-        <% comment.comments.each do |current_comment| %>
-        <%= render partial: "comments/comment", locals: {comment: current_comment} %>
-        <% end %>
+  <dd class="comments">
+    <span><%= link_to "[reply]", new_comment_comment_path(comment), class: "reply_link", id: "#{comment.commentable.id}" %></span>
+  </dd>
+
+  <dd class="comments">
+    <% if comment.comments.any? %>
+      <% comment.comments.each do |current_comment| %>
+      <%= render partial: "comments/comment", locals: {comment: current_comment} %>
       <% end %>
-    </p>
+    <% end %>
+  </dd>
 
-  </p>
-
-</article>
+</dl>
