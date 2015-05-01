@@ -1,0 +1,12 @@
+<div class='form'>
+  <%= form_for @observation, url: experiment_observations_path do |f| %>
+
+    <p><%= f.label :heading %></p>
+    <p><%= f.text_area :heading,   placeholder: "heading"  %></p>
+
+    <p><%= f.label :body %></p>
+    <p><%= f.text_area :body,   placeholder: "body"  %></p>
+
+    <p><%= f.submit %></p>
+  <% end %>
+</div>

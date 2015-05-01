@@ -1,5 +1,5 @@
 <section>
-  <h3>Experiment</h3>
+  <h2>Experiment:</h2>
   <h2><%= @experiment.title %></h2>
 
   <% if current_user.id == @experiment.researcher.id %>
@@ -13,21 +13,33 @@
     <dt>Last Updated</dt>
     <dd><%= @experiment.updated_at.strftime("%d %b, %Y") %></dd>
   </dl>
+  <section class="summary-container">
+    <h3>Summary</h3>
+    <p><%= @experiment.summary %></p>
+  </section>
 
   <section class="methodology-container">
     <h3>Methodology</h3>
+    <% if current_user.id == @experiment.researcher.id %>
+      <%= button_to "#{@experiment.methodology ? "Edit" : "Add"} Methodology", edit_methodology_path, method: :get if @experiment.pending? %>
+    <% end %>
     <p><%= @experiment.methodology %></p>
   </section>
 
-  <section class="observations-container">
-    <h3>Observations</h3>
-    <p><%= @experiment.observations %></p>
+  <section class="observation-container">
+    <h3>Observation Log</h3>
+    <p><%= render @experiment.observations if @experiment.observations.any?%></p>
+      <%= button_to "Add Observation", new_experiment_observation_path(@experiment),  method: :get unless @experiment.pending? %>
   </section>
 
-  <section class="conclusion-container">
-    <h3>Conclusion</h3>
-    <p><%= @experiment.conclusion %></p>
-  </section>
+    <section class="conclusion-container">
+      <h3>Conclusion</h3>
+      <% if @experiment.completed? %>
+          <p><%= @experiment.conclusion %></p>
+      <% elsif @experiment.running? %>
+          <%= button_to "Add Conclusion", conclude_experiment_path(@experiment),  method: :get %>
+      <% end %>
+    </section>
 
   <section>
     <h3>Comments</h3>
