@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true, format: { with: /.+(@uft.edu)/, message: "must be registered with UFT" }
 
   has_secure_password
+
+  acts_as_taggable_on :favorite
 end
