@@ -5,10 +5,11 @@
     <span class="created-at"><%= comment.created_at.strftime("%d %b, %Y") %></span>
   </dt>
 
-  <dt>
-    <span>Parent: <%= comment.commentable.id %></span>
-    <span>Ancestor: <%= comment.ancestry.id %></span>
-  </dt>
+  <!-- <dt> -->
+  <!--   <span>Comment: % # comment.id %></span> -->
+  <!--   <span>Parent: % # comment.commentable.id %></span> -->
+  <!--   <span>Ancestor: % # comment.ancestry.id %></span> -->
+  <!-- </dt> -->
 
   <dd class="comments">
     <%= comment.body %>

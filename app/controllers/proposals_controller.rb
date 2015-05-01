@@ -1,6 +1,5 @@
 class ProposalsController < ApplicationController
   before_action :set_scope, only: [:index]
-  # before_action :set_scope, only: [:index, :edit, :show]
 
   def index
     @proposals = @scope.all
