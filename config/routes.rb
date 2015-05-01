@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     resources :comments, :only => [:new, :create]
   end
 
+  #METHODOLOGIES
+  get "experiments/:id/edit_methodology" => "experiments#edit_methodology", as: :edit_methodology
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

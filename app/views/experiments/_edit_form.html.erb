@@ -1,0 +1,16 @@
+<section>
+<%= form_for @experiment do |f| %>
+  <p><%= f.label :title %></p>
+  <p><%= f.text_field :title,        placeholder: "title"        %></p>
+
+  <p><%= f.label :summary %></p>
+  <p><%= f.text_field :summary,        placeholder: "summary"        %></p>
+
+  <% if @experiment.methodology %>
+    <p><%= f.label :methodology %></p>
+    <p><%= f.text_area :methodology,   placeholder: "methodology"  %></p>
+  <% end %>
+
+  <p><%= f.submit %></p>
+<% end %>
+</section>

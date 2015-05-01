@@ -63,6 +63,16 @@ class ExperimentsController < ApplicationController
     redirect_to user_experiments_path(@user)
   end
 
+  def edit_methodology
+    @experiment = Experiment.find(params[:id])
+    if @experiment.researcher == current_user
+      render partial: "add_methodology"
+    else
+      flash[:alert] = "You must be the researcher on this experiment to edit."
+      redirect_to :back
+    end
+  end
+
   protected
 
   def update_state

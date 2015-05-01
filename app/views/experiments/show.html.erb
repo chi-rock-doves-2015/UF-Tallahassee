@@ -21,14 +21,18 @@
   <section class="methodology-container">
     <h3>Methodology</h3>
     <% if current_user.id == @experiment.researcher.id %>
-      <%= button_to "Add Methodology", edit_experiment_path(@experiment), method: :get %>
+      <%= button_to "#{@experiment.methodology ? "Edit" : "Add"} Methodology", edit_methodology_path, method: :get %>
     <% end %>
     <p><%= @experiment.methodology %></p>
   </section>
 
   <section class="observation-container">
     <h3>Observation Log</h3>
-    <p><%= render @observations if @observations %></p>
+    <%  if @experiment.observations.any? %>
+    <p><%= render @experiment.observations %></p>
+    <% elsif @experiment.running? %>
+      <%= button_to "Add Observation", "#", method: :get %>
+    <% end %>
   </section>
 
   <% if @experiment.completed? %>

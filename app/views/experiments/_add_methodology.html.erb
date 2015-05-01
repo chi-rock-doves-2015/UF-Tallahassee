@@ -1,5 +1,5 @@
 <div class='form'>
-  <%= form_for @experiment, url: proposal_experiments_path do |f| %>
+  <%= form_for @experiment do |f| %>
 
     <p><%= f.label :methodology %></p>
     <p><%= f.text_area :methodology,   placeholder: "methodology"  %></p>
