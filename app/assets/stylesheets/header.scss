@@ -1,0 +1,20 @@
+$blue: #3399ff;
+$red: #c94d4d;
+
+header {
+  background-color: $red;
+  color: #white;
+  padding: 8px
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+.project-listing {
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: $blue;
+}
+

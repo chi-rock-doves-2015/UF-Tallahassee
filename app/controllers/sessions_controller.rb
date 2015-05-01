@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :redirect_anon
+
   def new
     redirect_to current_user if session[:user_id]
     @user = User.new

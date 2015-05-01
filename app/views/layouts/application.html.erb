@@ -7,10 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 <%= render "layouts/header" %>
-
-<%= yield %>
-
+<div class='container'>
+  <%= render 'layouts/alert' if flash[:alert] %>
+  <%= render 'shared/errors' if @errors %>
+  <%= yield %>
+</div>
 </body>
 </html>
