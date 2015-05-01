@@ -23,6 +23,10 @@
     <p><%= @experiment.methodology %></p>
   </section>
 
+  <section class="observation-container">
+    <h3>Observation Log</h3>
+    <p><%= render @observations if @observations %></p>
+  </section>
 
   <section class="conclusion-container">
     <h3>Conclusion</h3>

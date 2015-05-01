@@ -23,7 +23,7 @@ class ExperimentsController < ApplicationController
     @proposal = Proposal.find_by(id: params[:proposal_id])
     if @user.experiments << @experiment && @proposal.experiments << @experiment
     #### NOT SURE THIS WILL WORK !!!!!!!!!!!!
-      redirect_to @experiment.proposal
+      redirect_to @experiment
     else
       @errors = @experiment.errors.full_messages
       render "new"
@@ -35,12 +35,11 @@ class ExperimentsController < ApplicationController
   end
 
   def edit
-    @user = User.find(session[:user_id])
     @experiment = Experiment.find(params[:id])
-    if @experiment.researcher.id == session[:user_id]
+    if @experiment.researcher == current_user
       render "edit"
     else
-      @errors = ["You must be the researcher on this experiment to edit."]
+      flash[:alert] = "You must be the researcher on this experiment to edit."
       redirect_to :back
     end
   end
@@ -72,7 +71,7 @@ class ExperimentsController < ApplicationController
   private
 
     def experiment_params
-      params.require(:experiment).permit(:title, :methodology, :observations, :conclusion)
+      params.require(:experiment).permit(:title, :methodology, :summary, :conclusion)
     end
 
 end
