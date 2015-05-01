@@ -3,14 +3,15 @@ class CommentsController < ApplicationController
     before_action :set_commentable, only: [:new, :create]
 
   def index
-    @comments = @scope.all
+    @comments = @scope.order("created_at DESC")
   end
 
   def new
     if session[:user_id]
       @comment = Comment.new
-      request.xhr?
-        render "_form"
+      if
+        request.xhr?
+          render "_form", layout: false
       else
         render "new"
       end
@@ -25,7 +26,11 @@ class CommentsController < ApplicationController
     @user = User.find_by(id: session[:user_id])
 
     if @commentable.comments << @comment && @user.comments << @comment
-      redirect_to @comment.ancestry
+      if request.xhr?
+        render "_comment", layout: false, locals: {comment: @comment}
+      else
+        redirect_to @comment.ancestry
+      end
     else
       @errors = @comment.errors.full_messages
       render "new"
