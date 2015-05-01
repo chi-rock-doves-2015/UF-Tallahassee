@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
   def new
     if session[:user_id]
       @comment = Comment.new
+      request.xhr?
+        render "_form"
+      else
+        render "new"
+      end
     else
       @errors = ["Your session has expired."]
       redirect_to login_path
