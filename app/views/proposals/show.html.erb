@@ -6,7 +6,7 @@
   <% end %>
 
   <% if current_user.id == @proposal.faculty.id %>
-    <%= button_to "Edit Proposal", edit_proposal_path(@proposal), method: :get %>
+    <%= button_to "Edit Proposal", edit_proposal_path(@proposal), method: :get%>
   <% end %>
 
   <dl>
@@ -49,9 +49,9 @@
 
 <br>
 <br>
-  <section>
-    <h3>Comments</h3>
-    <%= button_to "Add Comment", new_proposal_comment_path(@proposal), method: :get %>
+  <h3>Comments</h3>
+  <section class="comments-section">
+    <%= button_to "Add Comment", new_proposal_comment_path(@proposal), method: :get, class:"new-comment-btn" %>
     <%= render @proposal.comments %>
   </section>
 </section>
