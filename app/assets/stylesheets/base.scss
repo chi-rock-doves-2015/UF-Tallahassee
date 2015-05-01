@@ -1,5 +1,6 @@
 $blue: #3399ff;
 $red: #c94d4d;
+$white: #fcfbe3;
 
 h1, h2, h3, h4, h5, p, a {
   font-family: "helvetica", "sans-serif";
@@ -30,4 +31,12 @@ form {
 .form input {
   // border: 1px solid black;
   // this is ugly when applied to full-page forms.
+}
+
+html {
+  background: $white;
+}
+
+.proposal-container a, .proposal-container td {
+  color: black;
 }

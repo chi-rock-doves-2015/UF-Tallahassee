@@ -1,10 +1,11 @@
 $blue: #3399ff;
 $red: #c94d4d;
+$white: #fcfbe3;
 
 header {
   background-color: $red;
-  color: #white;
-  padding: 8px
+  padding: 8px;
+  border: 1px solid $blue;
 }
 
 header a {
@@ -15,7 +16,9 @@ header a {
 .project-listing {
   border: 1px solid black;
   border-radius: 4px;
-  background-color: $blue;
 }
 
+header li {
+  list-style: none;
+}
 
